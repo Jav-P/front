@@ -1,0 +1,6 @@
+<p>camara works!</p>
+<button (click)="acceder_camara()">Permisos</button>
+<!-- <video id="video" autoplay (imageCampure)="snapshot($event)"></video> -->
+<webcam [trigger]="$trigger" (imageCapture)="snapshot($event)"></webcam>
+<button (click)="tomarFoto()">Foto</button>
+<img [src]="imagen" height="250" width="300">
