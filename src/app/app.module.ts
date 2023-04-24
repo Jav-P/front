@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CamaraComponent } from './components/camara/camara.component';
 import { WebcamModule } from 'ngx-webcam';
+import { RegisterComponent } from './pages/register/register.component';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    CamaraComponent
+    CamaraComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    WebcamModule
+    WebcamModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

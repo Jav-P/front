@@ -1,6 +1,35 @@
 <p>camara works!</p>
 <button (click)="acceder_camara()">Permisos</button>
-<!-- <video id="video" autoplay (imageCampure)="snapshot($event)"></video> -->
 <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)"></webcam>
 <button (click)="tomarFoto()">Foto</button>
 <img [src]="imagen" height="250" width="300">
+<div>
+    <div class="list">
+        <h2>Full</h2>
+        <button (click)="visit()">Visitantes</button>
+        <button (click)="habit()">Habitaciones</button>
+        <button (click)="paci()">Pacientes</button>
+        <button (click)="piso()">Pisos</button>
+    </div>
+    <div class="id">
+        <h2>ID</h2>
+        <button (click)="visitID()">Visitantes</button>
+        <button (click)="habitID()">Habitaciones</button>
+        <button (click)="paciID()">Pacientes</button>
+        <button (click)="pisoID()">Pisos</button>
+    </div>
+    <div class="add">
+        <h2>Add</h2>
+        <button (click)="visitAdd()">Visitantes</button>
+        <button (click)="habitAdd()">Habitaciones</button>
+        <button (click)="paciAdd()">Pacientes</button>
+        <button (click)="pisoAdd()">Pisos</button>
+    </div>
+    <div class="delete">
+        <h2>Delete</h2>
+        <button (click)="visitAdd()">Visitantes</button>
+        <button (click)="habitAdd()">Habitaciones</button>
+        <button (click)="paciAdd()">Pacientes</button>
+        <button (click)="pisoDelete()">Pisos</button>
+    </div>
+</div>
