@@ -1,0 +1,19 @@
+<div class="contenedor1">
+    <div class="consultar">
+        <h3>Consultar paciente</h3>
+        <label for="cc">CC</label>
+        <input id="cc" type="number" placeholder="Cedula del paciente">
+        <button (click)="buscar()">Buscar</button>
+    </div>
+    <div class="login">
+        <h3>Iniciar sesión</h3>
+        <label for="">Usuario</label>
+        <input type="number" placeholder="Cedula visitante">
+        <br>
+        <button routerLink="login" routerLinkActive="active">Tomar foto</button>
+    </div>
+    <div class="registro">
+        <button routerLink="reg-vis" routerLinkActive="active">Registrarse</button>
+    </div>
+</div>
+<router-outlet></router-outlet>

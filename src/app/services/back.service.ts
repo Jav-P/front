@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Habitacion, Paciente, Piso, Visitante } from '../models/model';
 import { Observable } from "rxjs";
 
@@ -9,6 +9,7 @@ import { Observable } from "rxjs";
 export class BackService {
 
   private apiUrl: string = 'http://127.0.0.1:8000/CRUD'
+  httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
 
   constructor(private http : HttpClient) { }
 
@@ -22,9 +23,9 @@ export class BackService {
     const url = `${this.apiUrl}/habitaciones/`;
     return this.http.get<Habitacion[]>(url);
   }
-  getPacientes(): Observable<Paciente[]>{
+  getPacientes(): Observable<JSON>{
     const url = `${this.apiUrl}/pacientes/`;
-    return this.http.get<Paciente[]>(url);
+    return this.http.get<JSON>(url);
   }
   getPisos(): Observable<Piso[]>{
     const url = `${this.apiUrl}/pisos/`;
@@ -55,8 +56,9 @@ export class BackService {
    return this.http.post(url,visitante) 
   }
   addPiso(piso:Piso): Observable<object>{
+    const body = {num_piso:piso.num_piso}
     const url = `${this.apiUrl}/pisos/`;    
-    return this.http.post(url,piso) 
+    return this.http.post(url,body,{headers: this.httpHeaders}) 
   }
 
   // Delete

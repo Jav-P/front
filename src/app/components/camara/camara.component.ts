@@ -59,6 +59,8 @@ export class CamaraComponent implements OnInit {
   }
   paci(){
     this.backService.getPacientes().subscribe((vist)=>{
+      let pacientes=vist;
+      console.log(pacientes);
       console.log(vist);
     })       
   }
