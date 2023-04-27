@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { pipe } from 'rxjs';
+import { MensajePaciente, Paciente } from 'src/app/models/model';
 import { BackService } from 'src/app/services/back.service';
 
 @Component({
@@ -8,14 +10,43 @@ import { BackService } from 'src/app/services/back.service';
 })
 export class InicioComponent implements OnInit {
 
+  public cc:number;
+  habitacion:boolean= false;
+  pacienteNoEncontrado:boolean= false;
+  pacienteBuscado:Paciente;
+  habitacionPaciente=0;
   constructor(private backService: BackService) { }
 
   ngOnInit(): void {
   }
 
   buscar(){
-    let pacientes = this.backService.getPacientes();
-    // let paciente = pacientes.Pacientes.filter( item => item.cc_paciente == cc)
+    this.habitacion=false;
+    this.cc
+    this.backService.getPacientes().subscribe((vist)=>{
+      let pacienteBuscado=vist.Pacientes.filter((paciente)=>{
+        return paciente.cc_paciente ===this.cc; 
+      })
+      if (pacienteBuscado.length === 1) {
+        this.pacienteBuscado=pacienteBuscado[0]
+        this.habitacionPaciente=this.pacienteBuscado.habitacion_id
+        this.backService.getHabitacionesID(this.habitacionPaciente).subscribe((hab)=>{          
+          this.habitacionPaciente=hab.Habitacion.num_habitacion;
+        })
+        this.habitacion=true;
+        this.pacienteNoEncontrado=false;
+      }
+      // console.log(vist.Pacientes);
+      if (!this.habitacion){
+        this.pacienteNoEncontrado=true
+      }
+    })           
   }
 
+  click(){
+    this.habitacion=false;
+  }
+  Salida(){
+
+  }
 }

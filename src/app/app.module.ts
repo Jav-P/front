@@ -10,6 +10,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { HttpClientModule } from "@angular/common/http";
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +20,15 @@ import { FiltroPipe } from './pipes/filtro.pipe';
     CamaraComponent,
     RegisterComponent,
     InicioComponent,
-    FiltroPipe
+    FiltroPipe,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     WebcamModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

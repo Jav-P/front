@@ -1,19 +1,24 @@
 <div class="contenedor1">
     <div class="consultar">
-        <h3>Consultar paciente</h3>
+        <h3>Consultar habitación del paciente</h3>
         <label for="cc">CC</label>
-        <input id="cc" type="number" placeholder="Cedula del paciente">
+        <input id="cc" type="number" placeholder="Cedula del paciente" name="cc" [(ngModel)]="cc" onchange="click()">
         <button (click)="buscar()">Buscar</button>
+    </div>
+    <div *ngIf="habitacion">
+        <br>
+        <label> La habitación del paciente con cedula {{cc}} es {{habitacionPaciente}}</label>
+    </div>
+    <div *ngIf="pacienteNoEncontrado">
+        <br>
+        <label> El paciente con la cedula {{cc}} no fue encontrado</label>
     </div>
     <div class="login">
         <h3>Iniciar sesión</h3>
         <label for="">Usuario</label>
-        <input type="number" placeholder="Cedula visitante">
+        <input type="number" placeholder="Cedula visitante" >
         <br>
-        <button routerLink="login" routerLinkActive="active">Tomar foto</button>
-    </div>
-    <div class="registro">
-        <button routerLink="reg-vis" routerLinkActive="active">Registrarse</button>
+        <button  routerLink="login" routerLinkActive="active">Reconocimiento Facial</button>
+        <button routerLink="login" routerLinkActive="active">Hola</button>
     </div>
 </div>
-<router-outlet></router-outlet>

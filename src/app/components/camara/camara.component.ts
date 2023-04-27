@@ -28,14 +28,11 @@ export class CamaraComponent implements OnInit {
   ngOnInit(): void {}  
 
   snapshot(event: any){
-    // console.log(event); 
     this.base= event.imageAsDataUrl;   
     this.imagen= this.base
-    console.log(this.imagen.split('data:image/jpeg;base64,')[1]);   
-    // this.pruebaBack(); 
   }
   acceder_camara(){
-    navigator.mediaDevices.getUserMedia().then(res =>{
+    navigator.mediaDevices.getUserMedia({video: {width: 250, height: 250} }).then(res =>{
       console.log(res);
       this.stream=res;
       }
@@ -49,7 +46,7 @@ export class CamaraComponent implements OnInit {
 
   visit(){
     this.backService.getVisitantes().subscribe((vist)=>{
-      console.log(vist);
+      console.log(vist.Visitantes[0].cc_visitante);
     })       
   }
   habit(){
@@ -59,14 +56,15 @@ export class CamaraComponent implements OnInit {
   }
   paci(){
     this.backService.getPacientes().subscribe((vist)=>{
-      let pacientes=vist;
-      console.log(pacientes);
+      console.log(vist.Pacientes);
       console.log(vist);
     })       
   }
   piso(){
     this.backService.getPisos().subscribe((vist)=>{
       console.log(vist);
+      console.log(vist.Pisos[0]);
+      
     })       
   }
   visitID(){

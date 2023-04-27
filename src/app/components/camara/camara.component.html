@@ -1,9 +1,18 @@
-<p>camara works!</p>
-<button (click)="acceder_camara()">Permisos</button>
-<webcam [trigger]="$trigger" (imageCapture)="snapshot($event)"></webcam>
-<button (click)="tomarFoto()">Foto</button>
-<img [src]="imagen" height="250" width="300">
-<div>
+
+<button (click)="acceder_camara()" *ngIf="stream!==null">Encender Camara</button>
+<div class="uno">
+    <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" ></webcam>
+    <div *ngIf="imagen!==''">
+        <h3>¿ En esta imagen aparece el visitante ?</h3>
+        <img [src]="imagen" class="foto">
+        <div>
+            <button routerLink="" routerLinkActive="active">Si</button>
+            <button (click)="tomarFoto()">Volver a tomar la foto</button>
+        </div>
+    </div>
+</div>
+<button (click)="tomarFoto()" *ngIf="imagen===''">Foto</button>
+<!-- <div>
     <div class="list">
         <h2>Full</h2>
         <button (click)="visit()">Visitantes</button>
@@ -32,4 +41,4 @@
         <button (click)="paciAdd()">Pacientes</button>
         <button (click)="pisoDelete()">Pisos</button>
     </div>
-</div>
+</div> -->

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Habitacion, Paciente, Piso, Visitante } from '../models/model';
+import { Habitacion, MensajeHabitacion, MensajeHabitacionID, MensajePaciente, MensajePiso, MensajeVisitante, Paciente, Piso, Visitante } from '../models/model';
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -15,21 +15,21 @@ export class BackService {
 
   // Get
 
-  getVisitantes(): Observable<Visitante[]>{
+  getVisitantes(): Observable<MensajeVisitante>{
     const url = `${this.apiUrl}/visitantes/`;
-    return this.http.get<Visitante[]>(url);
+    return this.http.get<MensajeVisitante>(url);
   }
-  getHabitaciones(): Observable<Habitacion[]>{
+  getHabitaciones(): Observable<MensajeHabitacion>{
     const url = `${this.apiUrl}/habitaciones/`;
-    return this.http.get<Habitacion[]>(url);
+    return this.http.get<MensajeHabitacion>(url);
   }
-  getPacientes(): Observable<JSON>{
+  getPacientes(): Observable<MensajePaciente>{
     const url = `${this.apiUrl}/pacientes/`;
-    return this.http.get<JSON>(url);
+    return this.http.get<MensajePaciente>(url);
   }
-  getPisos(): Observable<Piso[]>{
+  getPisos(): Observable<MensajePiso>{
     const url = `${this.apiUrl}/pisos/`;
-    return this.http.get<Piso[]>(url);
+    return this.http.get<MensajePiso>(url);
   }
 
   // Get ID
@@ -37,9 +37,9 @@ export class BackService {
     const url = `${this.apiUrl}/visitantes/${id}`;
     return this.http.get<Visitante>(url);
   }
-  getHabitacionesID( id: number):Observable<Visitante>{
+  getHabitacionesID( id: number):Observable<MensajeHabitacionID>{
     const url = `${this.apiUrl}/habitaciones/${id}`;
-    return this.http.get<Visitante>(url);
+    return this.http.get<MensajeHabitacionID>(url);
   }
   getPacientesID( id: number):Observable<Visitante>{
     const url = `${this.apiUrl}/pacientes/${id}`;
