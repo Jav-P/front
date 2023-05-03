@@ -2,6 +2,7 @@ export class Visitante {
     id:number;
     cc_visitante:number;
     rostro:string;
+    foto:string;
     estado:string;
     habitacion:number;
     paciente:number;
@@ -9,9 +10,10 @@ export class Visitante {
         this.id=0;
         this.cc_visitante=0;
         this.rostro="";
-        this.estado="";
-        this.habitacion=0;
-        this.paciente=0;
+        this.foto="";
+        this.estado="Afuera";
+        this.habitacion=1;
+        this.paciente=1;
     }
 }
 export class Paciente {
@@ -57,7 +59,7 @@ export interface MensajePaciente {
 }
 export interface MensajeHabitacion {
     message: string;
-    Habitacions:  Habitacion[];
+    Habitacion:  Habitacion[];
 }
 export interface MensajePiso {
     message: string;

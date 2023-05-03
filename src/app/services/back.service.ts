@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Habitacion, MensajeHabitacion, MensajeHabitacionID, MensajePaciente, MensajePiso, MensajeVisitante, Paciente, Piso, Visitante } from '../models/model';
-import { Observable } from "rxjs";
+import { Observable, map, of, catchError } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
 export class BackService {
 
   private apiUrl: string = 'http://127.0.0.1:8000/CRUD'
-  httpHeaders = new HttpHeaders({'Content-Type':'application/json'});
+  httpHeaders = new HttpHeaders({'Content-Type':' application/json'});
 
   constructor(private http : HttpClient) { }
 
@@ -52,14 +52,18 @@ export class BackService {
 
   // Post
   addVisitante(visitante:Visitante): Observable<object>{
-    const url = `${this.apiUrl}/addC`;
+    const url = `${this.apiUrl}/visitantes/`;
    return this.http.post(url,visitante) 
   }
-  addPiso(piso:Piso): Observable<object>{
-    const body = {num_piso:piso.num_piso}
-    const url = `${this.apiUrl}/pisos/`;    
-    return this.http.post(url,body,{headers: this.httpHeaders}) 
+
+
+  addPiso(data:Piso): Observable<object>{
+    let curl = `${this.apiUrl}/pisos/`;    
+    // console.log(curl);
+    return this.http.post<any>(curl, data)
   }
+
+
 
   // Delete
   deletePiso(id:number): Observable<object>{
