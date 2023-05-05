@@ -24,11 +24,11 @@ export class RegisterComponent implements OnInit {
 
   crearVisitante(){
     this.visitante1.cc_visitante=this.cc;
-    this.visitante1.foto="b'"+this.infoService.foto+"'";
+    this.visitante1.foto=this.infoService.foto;
     console.log(this.visitante1.foto);
     
     this.prueba()
-    if(this.visitante1.foto==="b''"){
+    if(this.visitante1.foto===""){
       console.log("Dale que si");      
     }else{
       this.backService.addVisitante(this.visitante1).subscribe(res => {
