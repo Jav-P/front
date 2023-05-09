@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { pipe } from 'rxjs';
 import { MensajePaciente, Paciente } from 'src/app/models/model';
 import { BackService } from 'src/app/services/back.service';
@@ -11,21 +12,21 @@ import { DataIntService } from 'src/app/services/data-int.service';
 })
 export class InicioComponent implements OnInit {
 
-  public cc:number;
+  cc:number;
+  cc_v:number;
   habitacion:boolean= false;
   pacienteNoEncontrado:boolean= false;
   pacienteBuscado:Paciente;
   habitacionPaciente=0;
 
   @Input() foto:string='Hola'; 
-  constructor(private backService: BackService, public dataService: DataIntService) { }
+  constructor(private backService: BackService, public dataService: DataIntService, private router:Router) { }
 
   ngOnInit(): void {
   }
 
   buscar(){
     this.habitacion=false;
-    this.cc
     this.backService.getPacientes().subscribe((vist)=>{
       let pacienteBuscado=vist.Pacientes.filter((paciente)=>{
         return paciente.cc_paciente ===this.cc; 
@@ -46,11 +47,14 @@ export class InicioComponent implements OnInit {
     })           
   }
 
-  click(){
-    this.habitacion=false;
-  }
-  Salida(){
-    console.log(this.dataService.foto);
-    
+  login(){
+    if (this.cc_v!==undefined) {
+      this.dataService.cc=this.cc_v
+      this.router.navigate(['/login']);      
+    }else{
+      console.log("cedula del visitante");
+      
+    }
+      
   }
 }

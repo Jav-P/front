@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Habitacion, MensajeHabitacion, MensajeHabitacionID, MensajePaciente, MensajePiso, MensajeVisitante, Paciente, Piso, Visitante } from '../models/model';
+import { Habitacion, Login, MensajeHabitacion, MensajeHabitacionID, MensajeLogin, MensajePaciente, MensajePiso, MensajeVisitante, Paciente, Piso, Visitante } from '../models/model';
 import { Observable, map, of, catchError } from "rxjs";
 
 @Injectable({
@@ -13,6 +13,11 @@ export class BackService {
 
   constructor(private http : HttpClient) { }
 
+  // login
+  loginVisitante(log:Login): Observable<MensajeLogin>{
+    const url = `${this.apiUrl}/login/`;
+    return this.http.post<MensajeLogin>(url,log) 
+  }
   // Get
 
   getVisitantes(): Observable<MensajeVisitante>{

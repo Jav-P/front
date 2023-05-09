@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { ComponentsModule } from '../components/components.module';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from '../app-routing.module';
+import { SalidaComponent } from './salida/salida.component';
 
 
 
@@ -16,6 +17,7 @@ import { AppRoutingModule } from '../app-routing.module';
     RegisterComponent,
     InicioComponent,
     HomeComponent,
+    SalidaComponent,
   ],
   imports: [
     CommonModule,

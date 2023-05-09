@@ -2,7 +2,7 @@
     <div class="consultar">
         <h3>Consultar habitación del paciente</h3>
         <label for="cc">CC</label>
-        <input id="cc" type="number" placeholder="Cedula del paciente" name="cc" [(ngModel)]="cc" onchange="click()">
+        <input id="cc" type="number" placeholder="Cedula del paciente" name="cc" [(ngModel)]="cc">
         <button (click)="buscar()">Buscar</button>
     </div>
     <div *ngIf="habitacion">
@@ -16,9 +16,8 @@
     <div class="login">
         <h3>Iniciar sesión</h3>
         <label for="">Usuario</label>
-        <input type="number" placeholder="Cedula visitante" >
+        <input type="number" placeholder="Cedula visitante" name="cc_v" [(ngModel)]="cc_v">
         <br>
-        <button  routerLink="login" routerLinkActive="active">Reconocimiento Facial</button>
+        <button (click)="login()">Reconocimiento Facial</button>
     </div>
-    <button (click)="Salida()">foto</button>
 </div>

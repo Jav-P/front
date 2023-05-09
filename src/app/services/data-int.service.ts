@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class DataIntService {
 
   foto: string ='';
-  acepta:boolean;
+  acepta:boolean=false;
+  cc: number;
 
   constructor() { }
 }

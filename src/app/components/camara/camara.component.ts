@@ -51,6 +51,7 @@ export class CamaraComponent implements OnInit {
   tomarFoto(){
     this.trigger.next()
   }
+
   piso(){
     this.backService.getPisos().subscribe((vist)=>{
       console.log(vist);
@@ -82,9 +83,9 @@ export class CamaraComponent implements OnInit {
       console.log(vist.Visitantes[0]);      
     })
   }
-
   enviarFoto(){
     this.dataService.foto=this.data    
+    this.dataService.acepta=true
     // console.log(this.dataService.acepta);    
   }
 

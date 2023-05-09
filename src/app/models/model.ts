@@ -48,6 +48,16 @@ export class Piso {
         this.num_piso=0;
     }
 }
+export class Login {
+    id:number;
+    foto:string;
+    cc_visitante:number;
+    constructor(){
+        this.id=0;
+        this.cc_visitante=0;
+        this.foto="";
+    }
+}
 
 export interface MensajeVisitante {
     message: string;
@@ -68,4 +78,7 @@ export interface MensajePiso {
 export interface MensajeHabitacionID {
     message:    string;
     Habitacion: Habitacion;
+}
+export interface MensajeLogin {
+    message:    string;
 }
