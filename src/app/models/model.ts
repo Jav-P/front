@@ -4,16 +4,16 @@ export class Visitante {
     rostro:string;
     foto:string;
     estado:string;
-    habitacion:number;
-    paciente:number;
+    habitacion_id:number;
+    paciente_id:number;
     constructor(){
         this.id=0;
         this.cc_visitante=0;
         this.rostro="";
         this.foto="";
         this.estado="Afuera";
-        this.habitacion=1;
-        this.paciente=1;
+        this.habitacion_id=1;
+        this.paciente_id=1;
     }
 }
 export class Paciente {
@@ -80,5 +80,5 @@ export interface MensajeHabitacionID {
     Habitacion: Habitacion;
 }
 export interface MensajeLogin {
-    message:    string;
+    datos: any;
 }

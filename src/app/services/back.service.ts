@@ -68,6 +68,11 @@ export class BackService {
     return this.http.post<any>(curl, data)
   }
 
+  // Put
+  editVisitante(visitante:Visitante, id: number): Observable<object>{
+    const url = `${this.apiUrl}/visitantes/${id}`;
+   return this.http.put(url,visitante) 
+  }
 
 
   // Delete

@@ -19,7 +19,6 @@ export class InicioComponent implements OnInit {
   pacienteBuscado:Paciente;
   habitacionPaciente=0;
 
-  @Input() foto:string='Hola'; 
   constructor(private backService: BackService, public dataService: DataIntService, private router:Router) { }
 
   ngOnInit(): void {
@@ -33,6 +32,8 @@ export class InicioComponent implements OnInit {
       })
       if (pacienteBuscado.length === 1) {
         this.pacienteBuscado=pacienteBuscado[0]
+        this.dataService.paciente_id=this.pacienteBuscado.id
+        this.dataService.habitacion=this.pacienteBuscado.habitacion_id
         this.habitacionPaciente=this.pacienteBuscado.habitacion_id
         this.backService.getHabitacionesID(this.habitacionPaciente).subscribe((hab)=>{          
           this.habitacionPaciente=hab.Habitacion.num_habitacion;

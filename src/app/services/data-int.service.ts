@@ -8,6 +8,8 @@ export class DataIntService {
   foto: string ='';
   acepta:boolean=false;
   cc: number;
+  paciente_id:number;
+  habitacion:number;
 
   constructor() { }
 }

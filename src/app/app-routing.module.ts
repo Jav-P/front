@@ -5,6 +5,7 @@ import { InicioComponent } from './pages/inicio/inicio.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { CamaraComponent } from './components/camara/camara.component';
 import { HomeComponent } from './pages/home/home.component';
+import { SalidaComponent } from './pages/salida/salida.component';
 
 const routes: Routes = [
   {path: '', component:HomeComponent, pathMatch:'full'},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'registro', component:RegisterComponent},
   {path:'camara', component:CamaraComponent},
+  {path:'salida', component:SalidaComponent},
 ];
 
 @NgModule({

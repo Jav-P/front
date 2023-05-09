@@ -12,6 +12,7 @@ import { DataIntService } from 'src/app/services/data-int.service';
 export class LoginComponent implements OnInit {
   
   visitante1:Login = new Login();
+  visitante:Visitante;
   aceptar:boolean;
   constructor(private infoService:DataIntService, private router:Router, private backService:BackService) { }
 
@@ -34,11 +35,26 @@ export class LoginComponent implements OnInit {
         
         if (visitanteBuscado.length === 1) {
           this.visitante1.id=visitanteBuscado[0].id 
-          console.log(this.visitante1.id);
-          console.log(this.visitante1);
-
+          this.visitante=visitanteBuscado[0]
+          // console.log(this.visitante1.id);
+          // console.log(this.visitante);          
+          // console.log(this.visitante1);
           this.backService.loginVisitante(this.visitante1).subscribe(res => {
-            console.log(res); 
+            if(res.datos>0){
+              this.visitante.estado="Adentro"
+              this.visitante.paciente_id=this.infoService.paciente_id
+              this.visitante.habitacion_id=this.infoService.habitacion
+              console.log(this.visitante);              
+
+              // Acá deben estar los pacientes y todo lo demas
+
+              this.backService.editVisitante(this.visitante, this.visitante.id).subscribe(ed => {
+                // console.log(ed);                
+              })
+              console.log("El valor es "+res.datos);               
+            }else{
+              console.log("No coincide la persona ingresanda con la registrada");             
+            }
           })
                    
         }else{
