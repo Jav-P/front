@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { pipe } from 'rxjs';
 import { MensajePaciente, Paciente } from 'src/app/models/model';
+import { AlertService } from 'src/app/services/alert.service';
 import { BackService } from 'src/app/services/back.service';
 import { DataIntService } from 'src/app/services/data-int.service';
 
@@ -19,14 +20,15 @@ export class InicioComponent implements OnInit {
   pacienteBuscado:Paciente;
   habitacionPaciente=0;
 
-  constructor(private backService: BackService, public dataService: DataIntService, private router:Router) { }
+  constructor(private backService: BackService, public dataService: DataIntService, private router:Router, private alert:AlertService) { }
 
   ngOnInit(): void {
   }
 
   buscar(){
     if (this.cc===undefined) {
-      console.log("Alerta: Falta la cédula");      
+      console.log("Alerta: Falta la cédula");    
+      this.alert.showAlert("Falta la cédula del paciente", "alerta")   
     }else{
       this.habitacion=false;
       this.backService.getPacientes().subscribe((vist)=>{
@@ -53,11 +55,16 @@ export class InicioComponent implements OnInit {
   }
 
   login(){
-    if (this.cc_v!==undefined) {
-      this.dataService.cc=this.cc_v
-      this.router.navigate(['/login']);      
+    if ( this.pacienteBuscado!==undefined) {
+      if (this.cc_v!==undefined) {
+        this.dataService.cc=this.cc_v
+        this.router.navigate(['/login']);      
+      }else{
+        this.alert.showAlert("Falta la cédula del visitante", "alerta")    
+        console.log("Alerta: cedula del visitante");  
+      }
     }else{
-      console.log("Alerta: cedula del visitante");      
+      this.alert.showAlert("Debes buscar al paciente que se va a visitar", "alerta")  
     }
       
   }

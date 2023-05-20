@@ -1,0 +1,28 @@
+.alerta{
+    /* background-color: blue; */
+    position: fixed;
+    top: 55px;
+    right: 20px;
+    justify-content: center;
+    text-align: center;
+}
+.mensaje{
+    width: 10rem;
+    height: 4rem;
+}
+.error{
+    padding-top: 3rem;
+    background-color: red;
+    border-radius: 25px;
+}
+.succes{
+    padding-top: 3rem;
+    background-color: green;
+    border-radius: 25px;
+
+}
+.alerta1{
+    padding-top: 3rem;
+    background-color: yellow;
+    border-radius: 25px;
+}

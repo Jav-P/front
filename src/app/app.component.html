@@ -1,2 +1,12 @@
-<!-- <app-camara></app-camara> -->
+<div class="alerta" >
+    <div class="mensaje error" *ngIf="showAlertError">
+        <label >{{message}}</label>
+    </div>
+    <div class="mensaje succes" *ngIf="showAlertSucces">
+        <label>{{message}}</label>
+    </div>
+    <div class="mensaje alerta1" *ngIf="showAlertAlert">
+        <label >{{message}}</label>
+    </div>
+</div>
 <router-outlet></router-outlet>

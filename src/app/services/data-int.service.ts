@@ -7,9 +7,9 @@ export class DataIntService {
 
   foto: string ='';
   acepta:boolean=false;
-  cc: number;
-  paciente_id:number;
-  habitacion:number;
+  cc: number=0;
+  paciente_id:number=0;
+  habitacion:number=0;
 
   constructor() { }
 }
