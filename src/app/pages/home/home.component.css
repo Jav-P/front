@@ -1,0 +1,38 @@
+button{
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50rem;
+}
+.total{
+    width: 100%;
+}
+.titulo{
+    text-align: center;
+    font-size: 4rem;
+}
+.fa{
+    font-size:5rem;
+    margin-left: 1rem;
+}
+.borde{
+    -webkit-box-shadow: 0px 0px 13px 7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 13px 7px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 13px 7px rgba(0,0,0,0.75);
+    text-align: center;
+    margin: 0 25%;
+    padding: 5% 0;
+    border-radius: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.borde__button{
+    display: grid;
+    grid-row: 2;
+}
+.dos{
+    margin-right: 2rem;
+}
+label{
+    font-size: 1.8rem;
+}

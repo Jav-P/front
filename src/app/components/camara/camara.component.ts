@@ -24,6 +24,7 @@ export class CamaraComponent implements OnInit {
   habitacion:Habitacion = new Habitacion();
   paciente:Paciente = new Paciente();
   piso1:Piso = new Piso();
+  foto=false
 
   get $trigger():Observable<void>{
     return this.trigger.asObservable();
@@ -86,7 +87,12 @@ export class CamaraComponent implements OnInit {
   enviarFoto(){
     this.dataService.foto=this.data    
     this.dataService.acepta=true
+    this.foto=true
     // console.log(this.dataService.acepta);    
+  }
+
+  falso(){
+    this.imagen=""
   }
 
 

@@ -1,23 +1,22 @@
 <div class="contenedor1">
-    <div class="consultar">
-        <h3>Consultar habitación del paciente</h3>
-        <label for="cc">CC</label>
-        <input id="cc" type="number" placeholder="Cedula del paciente" name="cc" [(ngModel)]="cc">
-        <button (click)="buscar()">Buscar</button>
-    </div>
-    <div *ngIf="habitacion">
-        <br>
-        <label> La habitación del paciente con cedula {{cc}} es {{habitacionPaciente}}</label>
-    </div>
-    <div *ngIf="pacienteNoEncontrado">
-        <br>
-        <label> El paciente con la cedula {{cc}} no fue encontrado</label>
-    </div>
-    <div class="login">
-        <h3>Iniciar sesión</h3>
-        <label for="">Usuario</label>
-        <input type="number" placeholder="Cedula visitante" name="cc_v" [(ngModel)]="cc_v">
-        <br>
-        <button (click)="login()">Reconocimiento Facial</button>
+    <div class="borde">
+        <div class="consultar">
+            <h3>Habitación del paciente</h3>
+            <input id="cc" type="number" placeholder="Cédula del paciente" name="cc" [(ngModel)]="cc">
+            <button (click)="buscar()" class="search"><i class="fa fa-search search__icon"></i></button>
+        </div>
+        <div *ngIf="habitacion">
+            <br>
+            <label> La habitación del paciente con cedula {{cc}} es {{habitacionPaciente}}</label>
+        </div>
+        <div *ngIf="pacienteNoEncontrado">
+            <br>
+            <label> El paciente con la cedula {{cc}} no fue encontrado</label>
+        </div>
+        <div class="login">
+            <h3>Ingreso Visitante </h3>
+            <input type="number" placeholder="Cédula visitante" name="cc_v" [(ngModel)]="cc_v">
+            <button (click)="login()" class="reco"><i class="fa fa-id-badge reco__icon"></i></button>
+        </div>
     </div>
 </div>

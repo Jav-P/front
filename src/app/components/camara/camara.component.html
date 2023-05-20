@@ -1,16 +1,29 @@
-
-<button (click)="acceder_camara()" *ngIf="stream!==null">Encender Camara</button>
-<div class="uno">
-    <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" ></webcam>
-    <div *ngIf="imagen!==''">
-        <h3>¿ En esta imagen solo aparece el visitante ?</h3>
-        <img [src]="imagen" class="foto">
-        <div>
-            <button (click)="enviarFoto()" >Si</button>
-            <button (click)="tomarFoto()">Volver a tomar la foto</button>
+<div class="contenedor__camara">
+    <button (click)="acceder_camara()" *ngIf="stream!==null">Encender Camara</button>
+    <div class="uno">
+        <div *ngIf="imagen===''" class="camara">
+            <h3>Foto del Visitante</h3>
+            <webcam [trigger]="$trigger" (imageCapture)="snapshot($event)" ></webcam>
+        </div>
+        <div *ngIf="imagen!==''">
+            <h3>¿ En esta imagen se ve bien el rostro del visitante ?</h3>
+            <img [src]="imagen" class="foto">
+            <div class="grupo2" *ngIf="!foto">
+                <div class="grupo a">
+                    <button (click)="enviarFoto()" class="button button__si"><i class="fa fa-check"></i></button>
+                    <label>Aceptar</label>
+                </div>
+                <div class="grupo">
+                    <button (click)="falso()" class="button"><i class="fa fa-refresh"></i></button>
+                    <label>Repetir Foto</label>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="grupo grupo__foto" *ngIf="imagen===''">
+        <button (click)="tomarFoto()"  class="button button__foto"><i class="fa fa-camera"></i></button>
+        <label>Tomar Foto</label>
+    </div>
+    <!-- <button (click)="pisoAdd()" >getvisitante</button> -->
 </div>
-<button (click)="tomarFoto()" *ngIf="imagen===''">Foto</button>
-<!-- <button (click)="pisoAdd()" >getvisitante</button> -->
 

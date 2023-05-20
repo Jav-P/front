@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Login, MensajeHabitacion, MensajeHabitacionID, MensajeLogin, MensajePaciente, MensajePiso, MensajeVisitante, Piso, Visitante } from '../models/model';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Habitacion, Login, MensajeHabitacion, MensajeHabitacionID, MensajeLogin, MensajePaciente, MensajePiso, MensajeVisitante, Paciente, Piso, Visitante } from '../models/model';
-import { Observable, map, of, catchError } from "rxjs";
+import { Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'

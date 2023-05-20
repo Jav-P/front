@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
   
   visitante1:Login = new Login();
   visitante:Visitante;
-  aceptar:boolean;
   constructor(private infoService:DataIntService, private router:Router, private backService:BackService) { }
 
   ngOnInit(): void {
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   loginVisitante(){
     if(this.infoService.foto===""){
-      console.log("Dale que si");   
+      console.log("Alerta: Dale que si");   
       return   
     }else{
       this.visitante1.foto=this.infoService.foto;

@@ -25,27 +25,31 @@ export class InicioComponent implements OnInit {
   }
 
   buscar(){
-    this.habitacion=false;
-    this.backService.getPacientes().subscribe((vist)=>{
-      let pacienteBuscado=vist.Pacientes.filter((paciente)=>{
-        return paciente.cc_paciente ===this.cc; 
-      })
-      if (pacienteBuscado.length === 1) {
-        this.pacienteBuscado=pacienteBuscado[0]
-        this.dataService.paciente_id=this.pacienteBuscado.id
-        this.dataService.habitacion=this.pacienteBuscado.habitacion_id
-        this.habitacionPaciente=this.pacienteBuscado.habitacion_id
-        this.backService.getHabitacionesID(this.habitacionPaciente).subscribe((hab)=>{          
-          this.habitacionPaciente=hab.Habitacion.num_habitacion;
+    if (this.cc===undefined) {
+      console.log("Alerta: Falta la cédula");      
+    }else{
+      this.habitacion=false;
+      this.backService.getPacientes().subscribe((vist)=>{
+        let pacienteBuscado=vist.Pacientes.filter((paciente)=>{
+          return paciente.cc_paciente ===this.cc; 
         })
-        this.habitacion=true;
-        this.pacienteNoEncontrado=false;
-      }
-      // console.log(vist.Pacientes);
-      if (!this.habitacion){
-        this.pacienteNoEncontrado=true
-      }
-    })           
+        if (pacienteBuscado.length === 1) {
+          this.pacienteBuscado=pacienteBuscado[0]
+          this.dataService.paciente_id=this.pacienteBuscado.id
+          this.dataService.habitacion=this.pacienteBuscado.habitacion_id
+          this.habitacionPaciente=this.pacienteBuscado.habitacion_id
+          this.backService.getHabitacionesID(this.habitacionPaciente).subscribe((hab)=>{          
+            this.habitacionPaciente=hab.Habitacion.num_habitacion;
+          })
+          this.habitacion=true;
+          this.pacienteNoEncontrado=false;
+        }
+        // console.log(vist.Pacientes);
+        if (!this.habitacion){
+          this.pacienteNoEncontrado=true
+        }
+      })           
+    }
   }
 
   login(){
@@ -53,8 +57,7 @@ export class InicioComponent implements OnInit {
       this.dataService.cc=this.cc_v
       this.router.navigate(['/login']);      
     }else{
-      console.log("cedula del visitante");
-      
+      console.log("Alerta: cedula del visitante");      
     }
       
   }

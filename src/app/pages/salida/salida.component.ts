@@ -30,32 +30,38 @@ export class SalidaComponent implements OnInit {
       this.backService.getVisitantes().subscribe((vist)=>{
         let visitanteBuscado=vist.Visitantes.filter((visitante)=>{
           return visitante.cc_visitante===this.cc; 
-        })
+        })       
         
         if (visitanteBuscado.length === 1) {
+          if (visitanteBuscado[0].estado!=='Adentro') {
+            console.log("Alerta: Ya estaba afuera");   
+            return         
+          }
           this.visitante1.id=visitanteBuscado[0].id 
 
           this.visitante.id=visitanteBuscado[0].id
-          this.visitante=visitanteBuscado[0]
+          this.visitante=visitanteBuscado[0]          
 
-          this.backService.loginVisitante(this.visitante1).subscribe(res => {            
+          this.backService.loginVisitante(this.visitante1).subscribe(res => {   
+            // console.log(res);
+                     
             if(res.datos>0){
               this.visitante.estado="Afuera";
-              console.log(this.visitante);              
+              // console.log(this.visitante);              
 
               // Acá deben estar los pacientes y todo lo demas
 
               this.backService.editVisitante(this.visitante, this.visitante.id).subscribe(ed => {
                 // console.log(ed);                
               })
-              console.log("El valor es "+res.datos);               
+              // console.log("El valor es "+res.datos);               
             }else{
-              console.log("No coincide la persona ingresanda con la registrada");              
+              console.log("Alerta: No coincide la persona ingresanda con la registrada");              
             }
           })
                    
         }else{
-          console.log("Visitante no fue encontrado");        
+          console.log("Alerta: Visitante no fue encontrado");        
         }
       })     
       

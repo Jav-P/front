@@ -1,12 +1,11 @@
-<h3>Camara</h3>
-
-<div>
+<div class="contenedor">
+    <h3>Ingrese la cédula del visitante y escanee el rostro</h3>
     <div>
-        <label for="">Cedula del visitante</label>
-        <input type="number" name="cc" [(ngModel)]="cc">
+        <input type="number" name="cc" [(ngModel)]="cc" placeholder="Cédula Visitante">
     </div>
-</div>
-<app-camara></app-camara>
-<div>
-    <button (click)="SaleVisitante()">Aceptar</button>
+    <app-camara></app-camara>
+    <div class="grupo">
+        <button (click)="SaleVisitante()"><i class="fa fa-sign-out"></i></button>
+        <label>Salir</label>
+    </div>
 </div>

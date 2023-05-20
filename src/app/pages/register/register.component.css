@@ -1,0 +1,22 @@
+.contenedor{
+    display: grid;
+    text-align: center;
+    justify-content: center;
+}
+button{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 15px;
+}
+.grupo{    
+    display: grid;
+    margin: 2rem 0;
+    text-align: center;
+    justify-content: center;
+}
+.fa{
+    font-size: 3rem;
+}
+h3{
+    font-size: 2rem;
+}

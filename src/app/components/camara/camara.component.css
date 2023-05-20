@@ -1,6 +1,41 @@
+.contenedor__camara{
+    text-align: center;
+    align-items: center;
+}
 .foto{
-    width: 250px;
+    width: 600px;
 }
 .uno{
+    display: grid;
+    place-items: center;
+}
+.button{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 15px;
+}
+.grupo__foto{
     display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.fa{
+    font-size: 3rem;
+}
+.grupo{
+    display: grid;
+    grid-row: 2;
+    margin: 2rem 0;
+}
+.a{
+    margin-right: 2rem;
+}
+.grupo2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+h3{
+    font-size: 2rem;
 }

@@ -1,0 +1,23 @@
+.borde{
+    display: grid;
+    grid-row: 2;
+}
+h3{
+    font-size: 2rem;
+}
+
+.search, .reco{
+    margin: 0 0 0 1rem;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+}
+.search__icon{
+    font-size: 2rem;
+}
+.reco{
+border-radius: 15px;
+}
+.reco__icon{
+    font-size: 3rem;
+}
