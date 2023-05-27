@@ -23,12 +23,40 @@ export class RegisterComponent implements OnInit {
     this.visitante1.foto=this.infoService.foto;
     if (this.cc!==undefined) {
       this.backService.getVisitantes().subscribe((vist)=>{
-        let visitanteBuscado=vist.Visitantes.filter((visitante)=>{
-          return visitante.cc_visitante===this.cc; 
-        })
-        if (visitanteBuscado.length === 1) {
-          this.alert.showAlert("Esta cédula ya está registrada", "alerta")           
-          return
+      
+        
+        if (vist.message!=="Visitantes no encontrados ...") {
+          
+          let visitanteBuscado=vist.Visitantes.filter((visitante)=>{
+            return visitante.cc_visitante===this.cc; 
+          })
+          if (visitanteBuscado.length === 1) {
+            this.alert.showAlert("Esta cédula ya está registrada", "alerta")           
+            return
+          }else{
+            if(this.visitante1.foto===""){
+              this.alert.showAlert("Toma la foto y acepta", "alerta") 
+              // console.log("Dale que si");   
+              return   
+            }else if(this.cc===undefined){
+              console.log("Coloca la cedula");      
+              return
+            }else{
+              this.backService.addVisitante(this.visitante1).subscribe((res:any) => {
+                // console.log(res.message);
+                
+                if (res.message==="Succes") {
+                  this.alert.showAlert("Visitante se registro correctamente", "succes") 
+                  this.infoService.foto=''
+                  this.router.navigate(['/inicio']);          
+                }
+              }, error=>{
+                this.alert.showAlert("Se presento un error, vuelva a intentarlo", "error") 
+                this.router.navigate(['']);          
+              })
+            } 
+            
+          }
         }else{
           if(this.visitante1.foto===""){
             this.alert.showAlert("Toma la foto y acepta", "alerta") 
@@ -51,7 +79,6 @@ export class RegisterComponent implements OnInit {
               this.router.navigate(['']);          
             })
           } 
-          
         }
       })
     }else{
