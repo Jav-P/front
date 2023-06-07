@@ -38,7 +38,7 @@ export class SalidaComponent implements OnInit {
           if (visitanteBuscado.length === 1) {
             if (visitanteBuscado[0].estado!=='Adentro') {
               // console.log("Alerta: Ya estaba afuera"); 
-              this.alert.showAlert("Este visitante no ha ingresado o ya salio", "alerta")   
+              this.alert.showAlert("Este visitante no esta adentro", "alerta")   
               return         
             }
             this.visitante1.id=visitanteBuscado[0].id 
@@ -57,6 +57,10 @@ export class SalidaComponent implements OnInit {
   
                 this.backService.editVisitante(this.visitante, this.visitante.id).subscribe(ed => {
                   // console.log(ed);                
+                  if (this.infoService.acepta){
+                    this.alert.showAlert("El visitante salio correctamente", "succes")                
+                    this.router.navigate(['']);
+                  }
                 })
                 // console.log("El valor es "+res.datos);               
               }else{
@@ -64,7 +68,9 @@ export class SalidaComponent implements OnInit {
                 // console.log("Alerta: No coincide la persona ingresanda con la registrada");              
               }
             }, error=>{
-              this.alert.showAlert("Se presento un error, vuelta a intentarlo", "error")                
+              this.alert.showAlert("Se presento un error, vuelta a intentarlo", "error")     
+              console.log(error);
+                         
             })
             
           }else{
@@ -74,10 +80,7 @@ export class SalidaComponent implements OnInit {
         })     
         
       }  
-      if (this.infoService.acepta){
-        this.alert.showAlert("El visitante salio correctamente", "succes")                
-        this.router.navigate(['']);
-      }
+      
     }else{
       this.alert.showAlert("Ingrese la cédula del visitante que quiere salir", "alerta") 
     }

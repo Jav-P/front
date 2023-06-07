@@ -4,6 +4,10 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; 
 }
 
+:root{
+  --primary: #FFB84D
+}
+
 .contenedor1{
   margin: 0;
   position: absolute;
@@ -25,9 +29,9 @@ input[type=number]::-webkit-outer-spin-button {
   justify-content: center;
 }
 button{
-  background-color: rgb(224, 197, 0) ;
-    border: none;
-    cursor: pointer;
+  background-color:var(--primary) ;
+  border: none;
+  cursor: pointer;
 }
 input{
   padding: 12px 20px;

@@ -11,7 +11,7 @@ export class AlertService {
 
   constructor() { }
 
-  showAlert(message: string, tipo: string, time: number = 5000){
+  showAlert(message: string, tipo: string, time: number = 6500){
     this.alertSource.next({message, tipo, time})
   }
 }
